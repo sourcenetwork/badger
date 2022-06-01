@@ -415,3 +415,55 @@ func BenchmarkIteratePrefixSingleKey(b *testing.B) {
 		}
 	})
 }
+
+func TestItemCopyDuringIterator(t *testing.T) {
+	dir, err := ioutil.TempDir(".", "badger-test")
+	y.Check(err)
+	defer removeDir(dir)
+	opts := getTestOptions(dir)
+	db, err := Open(opts)
+	y.Check(err)
+	defer db.Close()
+
+	N := 100 // Should generate around 80 SSTables.
+	val := "OK"
+	bkey := func(i int) []byte {
+		return []byte(fmt.Sprintf("%06d", i))
+	}
+
+	batch := db.NewWriteBatch()
+	testItems := make([][2][]byte, N)
+	for i := 0; i < N; i++ {
+		k := bkey(i)
+		v := []byte(fmt.Sprintf("%s%d", val, i))
+		testItems[i] = [2][]byte{k, v}
+		y.Check(batch.Set(k, v))
+	}
+	y.Check(batch.Flush())
+
+	txn := db.NewTransaction(false)
+	opt := DefaultIteratorOptions
+	opt.PrefetchValues = false
+	itr := txn.NewIterator(opt)
+
+	items := make([]*Item, N)
+	i := 0
+	// collect copied items
+	for itr.Rewind(); itr.Valid(); itr.Next() {
+		item := itr.Item()
+		items[i] = item.Copy()
+		y.Check(err)
+		i++
+	}
+
+	for i, item := range items {
+		key := item.Key()
+		val, err := item.ValueCopy(nil)
+		y.Check(err)
+		if !bytes.Equal(key, testItems[i][0]) {
+			t.Error("Expected:", testItems[i][0], ", got:", key)
+		} else if !bytes.Equal(val, testItems[i][1]) {
+			t.Error("Expected:", testItems[i][1], ", got:", val)
+		}
+	}
+}
