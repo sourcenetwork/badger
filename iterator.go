@@ -63,6 +63,30 @@ func (item *Item) String() string {
 	return fmt.Sprintf("key=%q, version=%d, meta=%x", item.Key(), item.Version(), item.meta)
 }
 
+// Copy returns a new copy of item that can be safely used outside of a
+// iterator loop but before a transaction is commited/discarded.
+func (item *Item) SafeCopy() *Item {
+	i := &Item{}
+	i.key = y.SafeCopy(nil, item.key)
+	i.vptr = y.SafeCopy(nil, item.vptr)
+	i.txn = item.txn
+	i.meta = item.meta
+	i.status = item.status
+
+	return i
+}
+
+func (item *Item) Copy() *Item {
+	i := &Item{}
+	i.key = y.Copy(item.key)
+	i.vptr = y.Copy(item.vptr)
+	i.txn = item.txn
+	i.meta = item.meta
+	i.status = item.status
+
+	return i
+}
+
 // Key returns the key.
 //
 // Key is only valid as long as item is valid, or transaction is valid.  If you need to use it
