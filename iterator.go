@@ -25,9 +25,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/dgraph-io/badger/v4/table"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/table"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 type prefetchStatus uint8

@@ -28,9 +28,9 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/stretchr/testify/require"
 
-	bpb "github.com/dgraph-io/badger/v4/pb"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	bpb "github.com/sourcenetwork/badger/v4/pb"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 func keyWithPrefix(prefix string, k int) []byte {

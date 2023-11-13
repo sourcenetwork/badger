@@ -8,14 +8,14 @@ aliases = ["/get-started"]
 To start using Badger, install Go 1.19 or above. Run the following command to retrieve the library.
 
 ```sh
-$ go get github.com/dgraph-io/badger/v4
+$ go get github.com/sourcenetwork/badger/v4
 ```
 This will retrieve the library.
 
 ### Installing Badger Command Line Tool
 
 ```sh
-$ go install github.com/dgraph-io/badger/v4/badger@latest
+$ go install github.com/sourcenetwork/badger/v4/badger@latest
 ```
 This will install the badger command line utility into your $GOBIN path.
 
@@ -33,7 +33,7 @@ package main
 import (
 	"log"
 
-	badger "github.com/dgraph-io/badger/v4"
+	badger "github.com/sourcenetwork/badger/v4"
 )
 
 func main() {

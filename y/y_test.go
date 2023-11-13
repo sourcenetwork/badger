@@ -11,8 +11,8 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/dgraph-io/badger/v4/pb"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/pb"
 )
 
 func BenchmarkBuffer(b *testing.B) {

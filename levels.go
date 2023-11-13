@@ -33,10 +33,10 @@ import (
 	"github.com/pkg/errors"
 	otrace "go.opencensus.io/trace"
 
-	"github.com/dgraph-io/badger/v4/pb"
-	"github.com/dgraph-io/badger/v4/table"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/pb"
+	"github.com/sourcenetwork/badger/v4/table"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 type levelsController struct {

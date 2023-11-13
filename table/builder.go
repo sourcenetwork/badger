@@ -29,11 +29,11 @@ import (
 	"github.com/klauspost/compress/s2"
 	"github.com/pkg/errors"
 
-	"github.com/dgraph-io/badger/v4/fb"
-	"github.com/dgraph-io/badger/v4/options"
-	"github.com/dgraph-io/badger/v4/pb"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/fb"
+	"github.com/sourcenetwork/badger/v4/options"
+	"github.com/sourcenetwork/badger/v4/pb"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 const (

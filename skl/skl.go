@@ -37,8 +37,8 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 const (

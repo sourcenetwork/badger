@@ -20,10 +20,10 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/dgraph-io/badger/v4/pb"
-	"github.com/dgraph-io/badger/v4/trie"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/pb"
+	"github.com/sourcenetwork/badger/v4/trie"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 type subscriber struct {

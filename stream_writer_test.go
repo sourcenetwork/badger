@@ -27,9 +27,9 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/dgraph-io/badger/v4/pb"
-	"github.com/dgraph-io/badger/v4/y"
 	"github.com/dgraph-io/ristretto/z"
+	"github.com/sourcenetwork/badger/v4/pb"
+	"github.com/sourcenetwork/badger/v4/y"
 )
 
 func getSortedKVList(valueSize, listSize int) *z.Buffer {
